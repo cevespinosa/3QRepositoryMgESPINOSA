@@ -1,62 +1,354 @@
 <!DOCTYPE html>
-<html lang="en "> 
-<head> 
-    <meta charset="UTF -8">
-    <meta name="viewport" content="width=devide-width, initial scale=1.0">
-    <meta name="description" content="De La Salle University, programs, achievements, why it is one of the top universities in the Philippines."> 
-    <meta name="keywords" content="Top 4 Universities in the Philippines, De La Salle University, education, collage, History, Programs">
-    <meta name="author" content="Espinosa, Cassandra">
-    <title> Top 4 Universities in the Philippines</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="De La Salle University (DLSU), Programs, Achievements, Legacy."> 
+  <meta name="keywords" content="Top Four Universities in the Philippines, DLSU, Education, Courses, History, Programs">
+  <meta name="author" content="ESPINOSA, Cassandra">
+<title> Top Four Universities in the Philippines</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="../assets/top4univ_favicon2.png" type="image/png"/>
+    <link rel="icon" href="../assets/top4univ_favicon2 (2).png" type="image/png"/>
     <script src="script.js"defer></script>
     <link rel="stylesheet" href="" >
 
+  <style>
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+    background-color: #f5f7fb;
+    margin: 0;
+    padding: 0;
+    color: #222;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  nav {
+    background: linear-gradient(to right, #003f05, #064f04);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(6px);
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background-color: hwb(113 62% 11%);
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover::after,
+  nav a.active::after {
+    width: 100%;
+  }
+
+  nav a:hover {
+    color: hwb(113 62% 11%);
+    transform: scale(1.1);
+  }
+  nav a.active {
+    color: hwb(113 62% 11%);
+    font-weight: 600;
+  }
+
+ 
+  header {
+    position: relative;
+    height: 320px;
+    background: 
+      linear-gradient(to bottom, rgba(209, 237, 219, 0.838) 20%, rgba(4, 62, 9, 0.937) 100%),
+      url("../assets/La_Salle_Hall_Facade.jpg") no-repeat center/cover;
+
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+    padding-bottom: 40px;
+    overflow: hidden;
+  }
+
+  header::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(168, 213, 174, 0.514), rgba(7, 40, 0, 0.174));
+    z-index: 1;
+  }
+
+  header * {
+    position: relative;
+    z-index: 2;
+  }
+
+  header img {
+    width: 160px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+    animation: fadeInDown 1s ease forwards;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-top: 0.4rem;
+    animation: fadeInUp 1.4s ease forwards;
+  }
+
+  /* ========== MAIN CONTENT ========== */
+  main {
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  h2 {
+    color: #003f05;
+    border-left: 6px solid #003f05;
+    padding-left: 12px;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.3px;
+  }
+
+  p {
+    text-align: justify;
+    margin-top: 0.8rem;
+    line-height: 1.8;
+  }
+
+  img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 18px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 18px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  th, td {
+    padding: 12px;
+    border: 1px solid #d4d7e1;
+    text-align: left;
+  }
+
+  th {
+    background-color: #01470a;
+    color: white;
+    font-weight: 600;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f4f7fc;
+  }
+
+  tr:hover {
+    background-color: #e7efff;
+    transition: 0.3s;
+  }
+
+ 
+  iframe {
+    display: block;
+    margin: 25px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    max-width: 100%;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    background: linear-gradient(to right, #001b4f, #002f9e);
+    color: white;
+    padding: 1.3rem 0;
+    margin-top: 3rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.4px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  footer a {
+    color: #ffdd00;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+
+  </style>
 </head>
+
 <body>
-    <header>
-        <img src="../assets/lasalle_logo.png" alt="UST logo" width="100" height="115" style="vertical-align: middle;">
-        <h1 style="display: inline-block; vertical-align: middle; margin-left: 10px;">
-            De La Salle University
-        </h1>
-        <nav>
-            <a href="../index.html"> Home </a></br>
-            <a href ="#"> Ateneo De Manila </a></br>
-            <a href ="#"> University of the Philippines (UP) </a></br>
-            <a href ="#"> University of Santo Tomas (UST) </a></br>
-        </nav>
-    </header>
-    <section>
-        <div style="border: 2px solid #08500e; padding: 20px; background-color: #fffbe6;">
-        <h2>History of De La Salle University</h2>
-        <p>
-            Founded on April 28, 1611 the University of Santo Tomas (UST) is recognized as the oldest existing university in Asia. Originally Bishop Miguel de Benavides, O.P. initiated the establishment of this institution to prepare young men for the priesthood, his personal library and funds became the start of UST’s history. UST has played a big role in shaping the education, Catholicism, and culture of the Philippines for over four centuries. From its humble beginnings as the Colegio de Nuestra Señora del Santisimo Rosario in Intramuros, it has grown into a world-renowned institution for learning. Today, UST proudly holds the title of being the largest Catholic university in the world located on a single campus. With their mission that aims to develop knowledgeable, competent, and compassionate individuals guided by faith and reason, dedicated to serving the Church, the nation, and the world. Along with their vision that by 2030, the University of Santo Tomas envisions becoming a leading Catholic university in the Asia-Pacific, dedicated to holistic education and social transformation. UST truly serves as an important asset to the students' morals and the Philippines' future generations to come.
-        </p>
-        </div>
-        <br><img src="../assets/IMG_1353-1068x601.jpg" alt="image.png" width="500" height="300">
-        <div style="border: 2px solid #08500e; padding: 20px; background-color: #fffbe6;">
-        <h2>About De La Salle University</h2>
-        <p>
-        ---
-        </p>
-        </div>
-        <div style="border: 2px solid #08500e; padding: 20px; background-color: #fffbe6;">
-        <h2>About De La Salle University</h2>
-        <p>
-        ---
-        </p>
-        </div>
 
+<div style="background-color: #e8f5e9; text-align: center; color: #045b1a; padding: 10px;">
+  <h3 style="font-weight: bold; margin: 0;">Top 4 Universities in the Philippines</h3>
+  <h3 style="font-weight: normal; margin: 0;">by <em>Mg11,</em> Mg14, Mg19, and Mg26</h3>
+</div>
 
-        <iframe src="../assets/SSvid.net--UNIVERSITY-HYMN-The-UST-Hymn-LYRIC-VIDEO-Hymn-of-UST-Philippines_360p.mp4" 
-        alt="vid.mp4" width="500" height="300"></iframe>
-        <body style="background-image: url('../assets/1-UST-Zoom-Background_Main_Bldg_with_name.jpg'); background-size: 100%; background-repeat: repeat;">
-    </section>
+<header> <img src= "../assets/De_La_Salle_University.png" alt="De La Salle University Logo"> 
+<h1>De La Salle University (DLSU)</h1> 
+<p><strong>Education, Courses, and Academic Programs</strong></p> 
+</header>
+ 
+    <!-- NAVIGATION BAR -->
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="https://meganrainnidea.github.io/2QPortfolio_MgNIDEA/public/2Q1GMgNidea.html">ADMU</a>
+    <a href="https://maxine0323.github.io/CS3_2ndQtrPortfolio_MgREPEDRO//public/2Q1GMagnesiumRepedro.html">UST</a>
+    <a href= "https://cariangela.github.io/2QPortfolioMgGABRIEL/public/2Q1GMgGabriel.html">UP</a>
+    <a href="./public/2Q1GMgEspinosa.html" class="active">La Salle</a>
+  </nav>
+  
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <h2>History</h2>
+    <p>
+      Founded in 1911, De La Salle University was established by the Brothers of the Christian Schools (FSC) in Paco, Manila, to offer quality Catholic education rooted in the teachings of St. John Baptist de La Salle. Starting with only 125 students, the school quickly gained a reputation for academic excellence and moral formation. During World War II, the campus suffered heavy damage, but the institution rebuilt and later moved to Taft Avenue, where it continued to grow. Today, De La Salle University stands as one of the Philippines’ leading universities, known for its commitment to faith, scholarship, and service to the nation.
+    </p>  
+
+    <img src="../assets/De_Lasalle_Campus.png" alt="De La Salle University Campus">
+
+    <h2>Academics</h2>
+    <p>
+      De La Salle University offers a wide range of programs that promote both academic excellence and personal development. It promotes research, innovation, and well-rounded education to prepare students for their chosen fields. Its colleges in science, business, and engineering are known for producing graduates who excel both locally and internationally. The university also values development, helping students grow into responsible and compassionate individuals. DLSU encourages students to join extracurricular activities such as organizations, sports, and school chants to build teamwork, spirit, and Lasallian pride.
+    </p>
+
+    <h2>Achievements</h2>
+    <p>
+     De La Salle University has earned recognition as one of the top universities in the Philippines and Asia. It is known for its strong academic performance, research contributions, and community service programs. Many of its graduates have become successful professionals in various fields, reflecting the school’s high standards of education. Beyond academics, DLSU also excels in extracurricular activities. Its athletic teams, the De La Salle Green Archers, have won multiple championships in collegiate sports. The university takes pride in its active student organizations, cultural performances, and projects that highlight Lasallian talent, teamwork, and dedication to faith, service, and excellence.
+     </p>
+    
+    
+ 
+    <h2>Courses and Programs Offered</h2>
+    <table>
+  <thead style="background-color: #03521d; color: white;">
+    <tr>
+      <th>Program</th>
+      <th>College</th>
+      <th>Degree Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>BS Business Administration Major in Marketing Management</td>
+      <td>Ramon V. del Rosario College of Business</td>
+      <td>Regular Program</td>
+    </tr>
+    <tr>
+      <td>BS Computer Science Major in Software Technology</td>
+      <td>College of Computer Studies</td>
+      <td>Regular Program</td>
+    </tr>
+    <tr>
+      <td>BS Civil Engineering</td>
+      <td>Gokongwei College of Engineering</td>
+      <td>Regular Program</td>
+    </tr>
+    <tr>
+      <td>AB Communication</td>
+      <td>College of Liberal Arts</td>
+      <td>Regular Program</td>
+    </tr>
+    <tr>
+      <td>Juris Doctor (JD)</td>
+      <td>College of Law</td>
+      <td>Graduate Program</td>
+    </tr>
+  </tbody>
+    </table>
+  
+
+    <h2>DSLU Hymn – "Alma Mater Hymn"</h2>
+    <p>
+      The <em>“Alma Mater Hymn”</em> celebrates the Lasallian values of faith, service, and excellence, and is sung to show pride in being part of the De La Salle community.
+    </p>
+
+    <iframe width="1312" height="738" src="https://www.youtube.com/embed/2nPuDjWDc-8" title="De La Salle University Alma Mater Hymn" frameborder="0" allowfullscreen></iframe>
+   
+    <h2>Admissions Information</h2>
+<p>
+  The De La Salle University admissions process selects students with strong academic potential, leadership skills, and commitment to service. Applications open annually, and full details are available on the official 
+  <a href="https://www.dlsu.edu.ph/admissions/undergraduate/degree-programs/" target="_blank">DLSU Admissions website</a>.
+</p>
+  </main>
+
+  <!-- FOOTER -->
     <footer>
-
+     &copy; 2025 De La Salle University — All Rights Reserved
     </footer>
-        
-    </body>
-
-
+</body>
 </html>

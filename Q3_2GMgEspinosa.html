@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Centralized Club / Organization Application</title>
-
 <style>
 body { font-family: Arial, sans-serif; background-color: #d8ecff; }
 form { width: 600px; margin: 30px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
@@ -16,7 +15,6 @@ textarea { resize: vertical; }
 .buttons { text-align: center; }
 .buttons input, .buttons button { width: 140px; margin: 5px; }
 </style>
-
 <script>
 function confirmSubmit() { return confirm("Are you sure you want to submit this application?"); }
 function confirmReset() { return confirm("Are you sure you want to reset all the entered information?"); }
@@ -47,11 +45,8 @@ function saveSignup(event) {
 }
 </script>
 </head>
-
 <body>
-
 <form method="post" onsubmit="saveSignup(event)" onreset="return confirmReset();">
-
 <fieldset>
 <legend>Personal Information</legend>
 <label>Student ID:<input type="number" name="student_id" required onblur="checkEmpty(this)"></label>
@@ -59,7 +54,6 @@ function saveSignup(event) {
 <label>Birthday:<input type="date" name="birthday" required></label>
 <label>Email Address:<input type="email" name="email" required onblur="checkEmpty(this)"></label>
 </fieldset>
-
 <fieldset>
 <legend>Organization Details</legend>
 <label>Mobile Phone:<input type="text" name="mobile" required onblur="checkEmpty(this)"></label>
@@ -73,12 +67,10 @@ function saveSignup(event) {
 <option value="Grade 11">Grade 11</option>
 <option value="Grade 12">Grade 12</option>
 </select></label>
-
 <label>Intern / Extern:<br>
 <input type="radio" name="status" value="Intern" required> Intern
 <input type="radio" name="status" value="Extern" required> Extern
 </label>
-
 <label>Preferred Organization / Club:
 <select name="organization" required>
 <option value="">-- Select Organization --</option>
@@ -88,16 +80,13 @@ function saveSignup(event) {
 <option value="Bake Club">Bake Club</option>
 <option value="Flux">Flux</option>
 </select></label>
-
 <label>Why do you want to join?<textarea name="reason" rows="4" required onblur="checkEmpty(this)"></textarea></label>
 </fieldset>
-
 <div class="buttons">
 <input type="submit" value="Submit">
 <input type="reset" value="Reset">
 <button type="button" onclick="window.location.href='viewSignUps.html'">View Signups</button>
 </div>
-
 </form>
 </body>
 </html>

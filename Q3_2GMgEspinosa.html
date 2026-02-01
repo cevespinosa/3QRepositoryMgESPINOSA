@@ -5,145 +5,81 @@
 <title>Centralized Club / Organization Application</title>
 
 <style>
-body {
-font-family: Arial, sans-serif sf;
-background-color: #d8ecff;
-}
-
-form {
-width: 600px;
-margin: 30px auto;
-padding: 20px;
-background-color: #ffffff;
-border-radius: 8px;
-box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-fieldset {
-margin-bottom: 20px;
-border: 1px solid #ccc;
-padding: 15px;
-}
-
-legend {
-font-weight: bold;
-padding: 0 5px;
-}
-
-label {
-display: block;
-margin-bottom: 10px;
-}
-
-input, select, textarea {
-width: 100%;
-padding: 6px;
-margin-top: 4px;
-}
-
-textarea {
-resize: vertical;
-}
-
-
-input:focus, select:focus, textarea:focus {
-border: 2px solid #6cb5ea;
-background-color: #eef6ff;
-outline: none;
-}
-
-.invalid {
-border: 2px solid rgb(224, 148, 154);
-background-color: #ffecec;
-}
-
-.buttons {
-text-align: center;
-}
-
-.buttons input {
-width: 120px;
-margin: 5px;
-}
+body { font-family: Arial, sans-serif; background-color: #d8ecff; }
+form { width: 600px; margin: 30px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+fieldset { margin-bottom: 20px; border: 1px solid #ccc; padding: 15px; }
+legend { font-weight: bold; }
+label { display: block; margin-bottom: 10px; }
+input, select, textarea { width: 100%; padding: 6px; margin-top: 4px; }
+textarea { resize: vertical; }
+.invalid { border: 2px solid red; background-color: #ffecec; }
+.buttons { text-align: center; }
+.buttons input, .buttons button { width: 140px; margin: 5px; }
 </style>
 
 <script>
-function confirmSubmit() {
-return confirm("Are you sure you want to submit this application?");
-}
+function confirmSubmit() { return confirm("Are you sure you want to submit this application?"); }
+function confirmReset() { return confirm("Are you sure you want to reset all the entered information?"); }
+function checkEmpty(el) { el.value.trim() === "" ? el.classList.add("invalid") : el.classList.remove("invalid"); }
 
-function confirmReset() {
-return confirm("Are you sure you want to reset all the entered information?");
-}
+function saveSignup(event) {
+    event.preventDefault();
+    if (!confirmSubmit()) return;
 
-function checkEmpty(element) {
-if (element.value.trim() === "") {
-element.classList.add("invalid");
-} else {
-element.classList.remove("invalid");
-}
+    const signup = {
+        student_id: document.querySelector("[name='student_id']").value,
+        full_name: document.querySelector("[name='full_name']").value,
+        birthday: document.querySelector("[name='birthday']").value,
+        email: document.querySelector("[name='email']").value,
+        mobile: document.querySelector("[name='mobile']").value,
+        grade_level: document.querySelector("[name='grade_level']").value,
+        status: document.querySelector("[name='status']:checked").value,
+        organization: document.querySelector("[name='organization']").value,
+        reason: document.querySelector("[name='reason']").value
+    };
+
+    let signups = JSON.parse(localStorage.getItem("clubSignups")) || [];
+    signups.push(signup);
+    localStorage.setItem("clubSignups", JSON.stringify(signups));
+
+    alert("Signup saved successfully!");
+    document.querySelector("form").reset();
 }
 </script>
 </head>
+
 <body>
 
-<form method="post" action="submit" onsubmit="return confirmSubmit();" onreset="return confirmReset();">
-
+<form method="post" onsubmit="saveSignup(event)" onreset="return confirmReset();">
 
 <fieldset>
 <legend>Personal Information</legend>
-
-<label>
-Student ID:
-<input type="number" name="student_id" required onblur="checkEmpty(this)">
-</label>
-
-<label>
-Full Name:
-<input type="text" name="full_name" required onblur="checkEmpty(this)">
-</label>
-
-<label>
-Birthday:
-<input type="date" name="birthday" required>
-</label>
-
-<label>
-Email Address:
-<input type="email" name="email" required onblur="checkEmpty(this)">
-</label>
+<label>Student ID:<input type="number" name="student_id" required onblur="checkEmpty(this)"></label>
+<label>Full Name:<input type="text" name="full_name" required onblur="checkEmpty(this)"></label>
+<label>Birthday:<input type="date" name="birthday" required></label>
+<label>Email Address:<input type="email" name="email" required onblur="checkEmpty(this)"></label>
 </fieldset>
 
 <fieldset>
 <legend>Organization Details</legend>
-
-<label>
-Mobile Phone:
-<input type="text" name="mobile" required onblur="checkEmpty(this)">
-</label>
-
-<label>
-Grade Level:
+<label>Mobile Phone:<input type="text" name="mobile" required onblur="checkEmpty(this)"></label>
+<label>Grade Level:
 <select name="grade_level" required>
 <option value="">-- Select Grade Level --</option>
-<option value="g7">Grade 7</option>
-<option value="g8">Grade 8</option>
-<option value="g9">Grade 9</option>
-<option value="g10">Grade 10</option>
-<option value="g11">Grade 11</option>
-<option value="g12">Grade 12</option>
-</select>
+<option value="Grade 7">Grade 7</option>
+<option value="Grade 8">Grade 8</option>
+<option value="Grade 9">Grade 9</option>
+<option value="Grade 10">Grade 10</option>
+<option value="Grade 11">Grade 11</option>
+<option value="Grade 12">Grade 12</option>
+</select></label>
+
+<label>Intern / Extern:<br>
+<input type="radio" name="status" value="Intern" required> Intern
+<input type="radio" name="status" value="Extern" required> Extern
 </label>
 
-<label>
-Intern / Extern:
-<br>
-<input type="radio" name="status" value="internal_member" required> Intern
-<input type="radio" name="status" value="external_member" required> Extern
-</label>
-
-<label>
-Preferred Organization / Club:
+<label>Preferred Organization / Club:
 <select name="organization" required>
 <option value="">-- Select Organization --</option>
 <option value="Kislap">Kislap</option>
@@ -151,21 +87,17 @@ Preferred Organization / Club:
 <option value="Invictus">Invictus</option>
 <option value="Bake Club">Bake Club</option>
 <option value="Flux">Flux</option>
-</select>
-</label>
+</select></label>
 
-<label>
-Why do you want to join?
-<textarea name="reason" rows="4" required onblur="checkEmpty(this)"></textarea>
-</label>
+<label>Why do you want to join?<textarea name="reason" rows="4" required onblur="checkEmpty(this)"></textarea></label>
 </fieldset>
 
 <div class="buttons">
 <input type="submit" value="Submit">
 <input type="reset" value="Reset">
+<button type="button" onclick="window.location.href='viewSignUps.html'">View Signups</button>
 </div>
 
 </form>
-
 </body>
 </html>

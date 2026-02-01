@@ -6,10 +6,15 @@
 
 <style>
 body { font-family: Arial, sans-serif; background-color: #eef6ff; padding: 20px; }
+h2 { color: #3a6ea5; }
+label { font-weight: bold; }
+select { padding: 5px; margin-left: 10px; margin-bottom: 15px; }
 table { width: 100%; border-collapse: collapse; margin-top: 15px; }
 th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
 th { background-color: #cfe4ff; }
 .message { margin-top: 20px; font-weight: bold; color: #444; }
+a.back { display: inline-block; margin-top: 20px; padding: 8px 12px; background-color: #cce7ff; color: #3a6ea5; text-decoration: none; border-radius: 5px; }
+a.back:hover { background-color: #b0d4ff; }
 </style>
 
 <script>
@@ -19,12 +24,11 @@ function loadSignups() {
     const filter = document.getElementById("clubFilter").value;
     const tableBody = document.getElementById("tableBody");
     const total = document.getElementById("total");
-
     tableBody.innerHTML = "";
 
     if (!signups || signups.length === 0) {
         total.textContent = "0";
-        tableBody.innerHTML = "<tr><td colspan='5'>No sign-ups saved.</td></tr>";
+        tableBody.innerHTML = "<tr><td colspan='5'>No sign-ups saved yet.</td></tr>";
         return;
     }
 
@@ -82,7 +86,7 @@ function loadSignups() {
 
 <p class="message">Total Sign-ups: <span id="total">0</span></p>
 
-<a href="index.html">⬅ Back to Portfolio</a>
+<a href="Q3_2GMgEspinosa.html" class="back">⬅ Back to Sign-Up Page</a>
 
 </body>
 </html>

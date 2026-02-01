@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>View Club Signups</title>
+
+<style>
+body { font-family: Arial, sans-serif; background-color: #eef6ff; padding: 20px; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+th { background-color: #cfe4ff; }
+.message { margin-top: 20px; font-weight: bold; color: #444; }
+</style>
+
+<script>
+let signups = JSON.parse(localStorage.getItem("clubSignups"));
+
+function loadSignups() {
+    const filter = document.getElementById("clubFilter").value;
+    const tableBody = document.getElementById("tableBody");
+    const total = document.getElementById("total");
+
+    tableBody.innerHTML = "";
+
+    if (!signups || signups.length === 0) {
+        total.textContent = "0";
+        tableBody.innerHTML = "<tr><td colspan='5'>No sign-ups saved.</td></tr>";
+        return;
+    }
+
+    const filtered = filter === "ALL" ? signups : signups.filter(s => s.organization === filter);
+
+    if (filtered.length === 0) {
+        total.textContent = "0";
+        tableBody.innerHTML = "<tr><td colspan='5'>No sign-ups for this club.</td></tr>";
+        return;
+    }
+
+    filtered.forEach(s => {
+        tableBody.innerHTML += `
+        <tr>
+            <td>${s.full_name}</td>
+            <td>${s.student_id}</td>
+            <td>${s.grade_level}</td>
+            <td>${s.organization}</td>
+            <td>${s.status}</td>
+        </tr>`;
+    });
+
+    total.textContent = filtered.length;
+}
+</script>
+</head>
+
+<body onload="loadSignups()">
+
+<h2>Club Sign-Ups</h2>
+
+<label>Filter by Club:
+<select id="clubFilter" onchange="loadSignups()">
+<option value="ALL">ALL</option>
+<option value="Kislap">Kislap</option>
+<option value="Model United Nations">Model United Nations</option>
+<option value="Invictus">Invictus</option>
+<option value="Bake Club">Bake Club</option>
+<option value="Flux">Flux</option>
+</select>
+</label>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Student ID</th>
+<th>Grade</th>
+<th>Club</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody id="tableBody"></tbody>
+</table>
+
+<p class="message">Total Sign-ups: <span id="total">0</span></p>
+
+<a href="index.html">⬅ Back to Sign-Up Page</a>
+
+</body>
+</html>

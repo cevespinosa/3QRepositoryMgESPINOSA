@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>View Club Signups</title>
-
+<title>Show List of Students Who Signed-Up</title>
 <style>
 body { font-family: Arial, sans-serif; background-color: #eef6ff; padding: 20px; }
-h2 { color: #3a6ea5; }
-label { font-weight: bold; }
-select { padding: 5px; margin-left: 10px; margin-bottom: 15px; }
-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-th { background-color: #cfe4ff; }
-.message { margin-top: 20px; font-weight: bold; color: #444; }
-a.back { display: inline-block; margin-top: 20px; padding: 8px 12px; background-color: #cce7ff; color: #3a6ea5; text-decoration: none; border-radius: 5px; }
-a.back:hover { background-color: #b0d4ff; }
+h1 { color: #000; }
+h3 { font-weight: normal; }
+label { font-weight: bold; margin-right: 10px; }
+select { padding: 5px; margin-bottom: 10px; border: 2px solid #000080; border-radius: 5px; }
+table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+th, td { border: 1px solid #000080; padding: 8px; text-align: center; }
+th { background-color: #000080; color: white; }
+a { text-decoration: none; color: #0000ff; }
+a:hover { text-decoration: underline; }
+.message { margin-top: 15px; font-weight: bold; }
 </style>
-
 <script>
 let signups = JSON.parse(localStorage.getItem("clubSignups"));
 
@@ -28,7 +27,7 @@ function loadSignups() {
 
     if (!signups || signups.length === 0) {
         total.textContent = "0";
-        tableBody.innerHTML = "<tr><td colspan='5'>No sign-ups saved yet.</td></tr>";
+        tableBody.innerHTML = "<tr><td colspan='8'>No sign-ups saved yet.</td></tr>";
         return;
     }
 
@@ -36,17 +35,19 @@ function loadSignups() {
 
     if (filtered.length === 0) {
         total.textContent = "0";
-        tableBody.innerHTML = "<tr><td colspan='5'>No sign-ups for this club.</td></tr>";
+        tableBody.innerHTML = "<tr><td colspan='8'>No sign-ups for this club.</td></tr>";
         return;
     }
 
     filtered.forEach(s => {
         tableBody.innerHTML += `
         <tr>
-            <td>${s.full_name}</td>
-            <td>${s.student_id}</td>
-            <td>${s.grade_level}</td>
             <td>${s.organization}</td>
+            <td>${s.student_id}</td>
+            <td>${s.full_name}</td>
+            <td>${s.grade_level}</td>
+            <td>${s.email}</td>
+            <td>${s.mobile}</td>
             <td>${s.status}</td>
         </tr>`;
     });
@@ -55,14 +56,13 @@ function loadSignups() {
 }
 </script>
 </head>
-
 <body onload="loadSignups()">
-
-<h2>Club Sign-Ups</h2>
-
-<label>Filter by Club:
+<h1>Show List of Students Who Signed-Up</h1>
+<h3>by AL Mendoza</h3>
+<a href="Q3_2GMgEspinosa.html">Back to Signup</a><br><br>
+<label>Select Your Club:
 <select id="clubFilter" onchange="loadSignups()">
-<option value="ALL">ALL</option>
+<option value="ALL">-- select an option --</option>
 <option value="Kislap">Kislap</option>
 <option value="Model United Nations">Model United Nations</option>
 <option value="Invictus">Invictus</option>
@@ -70,23 +70,21 @@ function loadSignups() {
 <option value="Flux">Flux</option>
 </select>
 </label>
-
+<p>Total Signup : <span id="total">0</span></p>
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Student ID</th>
-<th>Grade</th>
 <th>Club</th>
-<th>Status</th>
+<th>ID</th>
+<th>Fullname</th>
+<th>Grade</th>
+<th>Email</th>
+<th>Mobile</th>
+<th>Intern|Extern</th>
 </tr>
 </thead>
 <tbody id="tableBody"></tbody>
 </table>
-
-<p class="message">Total Sign-ups: <span id="total">0</span></p>
-
-<a href="Q3_2GMgEspinosa.html" class="back">⬅ Back to Sign-Up Page</a>
-
 </body>
 </html>
+

@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Harry Potter Movie Ratings</title>
+<title>Movie Ratings</title>
 
 <style>
 
@@ -30,7 +28,7 @@ label{
 font-weight:bold;
 }
 
-input, select{
+select{
 width:100%;
 padding:8px;
 margin:6px 0 12px 0;
@@ -46,21 +44,17 @@ border-radius:5px;
 cursor:pointer;
 }
 
-button:hover{
-background:#1b5e20;
-}
-
 .star{
 font-size:26px;
 color:gray;
 cursor:pointer;
 }
 
-.star.selected{
+.star.active{
 color:gold;
 }
 
-.movieCard{
+.movie{
 background:#eee;
 padding:10px;
 margin-top:10px;
@@ -74,7 +68,7 @@ border-radius:6px;
 
 <div class="container">
 
-<h2>Harry Potter Movie Rating</h2>
+<h2>Movie Ratings</h2>
 
 <form id="movieForm">
 
@@ -91,7 +85,16 @@ border-radius:6px;
 </select>
 
 <label>Year</label>
-<input type="number" id="year" placeholder="2001" required>
+<select id="year">
+<option>2001</option>
+<option>2002</option>
+<option>2004</option>
+<option>2005</option>
+<option>2007</option>
+<option>2009</option>
+<option>2010</option>
+<option>2011</option>
+</select>
 
 <label>Genre</label>
 <select id="genre">
@@ -127,31 +130,29 @@ border-radius:6px;
 let stars=document.querySelectorAll(".star")
 
 function setRating(num){
+
 document.getElementById("rating").value=num
+
 stars.forEach((star,index)=>{
 if(index<num){
-star.classList.add("selected")
+star.classList.add("active")
 }else{
-star.classList.remove("selected")
+star.classList.remove("active")
 }
 })
+
 }
 
 function addMovie(){
 
-let title=document.getElementById("title").value
-let year=document.getElementById("year").value
-let genre=document.getElementById("genre").value
-let rating=document.getElementById("rating").value
-
 let movie={
-title:title,
-year:year,
-genre:genre,
-rating:rating
+title:document.getElementById("title").value,
+year:document.getElementById("year").value,
+genre:document.getElementById("genre").value,
+rating:document.getElementById("rating").value
 }
 
-let movies=JSON.parse(localStorage.getItem("movies"))||[]
+let movies=JSON.parse(localStorage.getItem("movies")) || []
 
 movies.push(movie)
 
@@ -161,19 +162,19 @@ displayMovies()
 
 document.getElementById("movieForm").reset()
 
-stars.forEach(star=>star.classList.remove("selected"))
+stars.forEach(star=>star.classList.remove("active"))
 
 }
 
 function displayMovies(){
 
-let movies=JSON.parse(localStorage.getItem("movies"))||[]
+let movies=JSON.parse(localStorage.getItem("movies")) || []
 
-let movieList=document.getElementById("movieList")
+let list=document.getElementById("movieList")
 
-movieList.innerHTML=""
+list.innerHTML=""
 
-movies.forEach(movie=>{
+movies.forEach(function(movie){
 
 let starDisplay=""
 
@@ -181,8 +182,8 @@ for(let i=0;i<movie.rating;i++){
 starDisplay+="⭐"
 }
 
-movieList.innerHTML+=`
-<div class="movieCard">
+list.innerHTML+=`
+<div class="movie">
 <b>${movie.title}</b> (${movie.year})<br>
 Genre: ${movie.genre}<br>
 Rating: ${starDisplay}
@@ -190,6 +191,7 @@ Rating: ${starDisplay}
 `
 
 })
+
 }
 
 displayMovies()

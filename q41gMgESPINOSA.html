@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Harry Potter Movie Ratings</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+}
+
+.container{
+width:420px;
+margin:auto;
+margin-top:40px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+}
+
+label{
+font-weight:bold;
+}
+
+input, select{
+width:100%;
+padding:8px;
+margin:6px 0 12px 0;
+}
+
+button{
+width:100%;
+padding:10px;
+background:#2e7d32;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1b5e20;
+}
+
+.star{
+font-size:26px;
+color:gray;
+cursor:pointer;
+}
+
+.star.selected{
+color:gold;
+}
+
+.movieCard{
+background:#eee;
+padding:10px;
+margin-top:10px;
+border-radius:6px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Harry Potter Movie Rating</h2>
+
+<form id="movieForm">
+
+<label>Movie Title</label>
+<select id="title">
+<option>Harry Potter and the Sorcerer's Stone</option>
+<option>Harry Potter and the Chamber of Secrets</option>
+<option>Harry Potter and the Prisoner of Azkaban</option>
+<option>Harry Potter and the Goblet of Fire</option>
+<option>Harry Potter and the Order of the Phoenix</option>
+<option>Harry Potter and the Half-Blood Prince</option>
+<option>Harry Potter and the Deathly Hallows Part 1</option>
+<option>Harry Potter and the Deathly Hallows Part 2</option>
+</select>
+
+<label>Year</label>
+<input type="number" id="year" placeholder="2001" required>
+
+<label>Genre</label>
+<select id="genre">
+<option>Fantasy</option>
+<option>Adventure</option>
+<option>Action</option>
+<option>Drama</option>
+</select>
+
+<label>Rating</label><br>
+
+<span class="star" onclick="setRating(1)">★</span>
+<span class="star" onclick="setRating(2)">★</span>
+<span class="star" onclick="setRating(3)">★</span>
+<span class="star" onclick="setRating(4)">★</span>
+<span class="star" onclick="setRating(5)">★</span>
+
+<input type="hidden" id="rating">
+
+<br><br>
+
+<button type="button" onclick="addMovie()">Add Movie</button>
+
+</form>
+
+<h3>Movie List</h3>
+<div id="movieList"></div>
+
+</div>
+
+<script>
+
+let stars=document.querySelectorAll(".star")
+
+function setRating(num){
+document.getElementById("rating").value=num
+stars.forEach((star,index)=>{
+if(index<num){
+star.classList.add("selected")
+}else{
+star.classList.remove("selected")
+}
+})
+}
+
+function addMovie(){
+
+let title=document.getElementById("title").value
+let year=document.getElementById("year").value
+let genre=document.getElementById("genre").value
+let rating=document.getElementById("rating").value
+
+let movie={
+title:title,
+year:year,
+genre:genre,
+rating:rating
+}
+
+let movies=JSON.parse(localStorage.getItem("movies"))||[]
+
+movies.push(movie)
+
+localStorage.setItem("movies",JSON.stringify(movies))
+
+displayMovies()
+
+document.getElementById("movieForm").reset()
+
+stars.forEach(star=>star.classList.remove("selected"))
+
+}
+
+function displayMovies(){
+
+let movies=JSON.parse(localStorage.getItem("movies"))||[]
+
+let movieList=document.getElementById("movieList")
+
+movieList.innerHTML=""
+
+movies.forEach(movie=>{
+
+let starDisplay=""
+
+for(let i=0;i<movie.rating;i++){
+starDisplay+="⭐"
+}
+
+movieList.innerHTML+=`
+<div class="movieCard">
+<b>${movie.title}</b> (${movie.year})<br>
+Genre: ${movie.genre}<br>
+Rating: ${starDisplay}
+</div>
+`
+
+})
+}
+
+displayMovies()
+
+</script>
+
+</body>
+</html>

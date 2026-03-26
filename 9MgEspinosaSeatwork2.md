@@ -147,10 +147,17 @@ ANSWER: The notice appears on top of the content because its z-index is higher; 
 
 3. Please answer the following reflection questions (15 minutes)
 
-    a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
+    a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)?
+   
+ANSWER: Static is the default, relative moves from its original spot, absolute is based on its parent and removed from flow, and fixed stays on screen even when 
 
-    b. How does absolute positioning depend on its parent element?
+ b. How does absolute positioning depend on its parent element?
+    Absolute elements follow the nearest parent with a set position, and if none, they follow the whole page.
 
-    c. How do you differentiate sticky from fixed (you can research on sticky)?
+c. How do you differentiate sticky from fixed (you can research on sticky)?
+ANSWER: Sticky moves with the page then sticks, while fixed stays in one place the whole time.
 
-    d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
+ d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
+ scrolling.
+
+I will use fixed for menus or timers and absolute with relative to place important announcements on posters.

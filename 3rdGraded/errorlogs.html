@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <meta name="author" content="Sir Roy/Al Mendoza">
+  <meta name="author" content="Cassie Espinosa">
   <meta name="description" content="testing and debugging">
   <meta name="keywords" content="testing and debugging">
   <title>CS3 </title>
@@ -14,7 +14,8 @@
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
   <style>
-    tr:nth-child(1) ~ tr:nth-child(odd) {
+    /* Fixed alternating row styling */
+    tr:nth-child(odd) {
       background-color: lightgray;
       color: black;
     }
@@ -30,19 +31,38 @@
       font-weight: bold;
       padding: 10px;
     }
-    
+    header h1 {
+      padding: 30px;
+    }
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    /* Social media icons (example sprite CSS) */
+    .icon {
+      width: 40px;
+      height: 40px;
+      display: inline-block;
+      background-image: url('images/sprites.png');
+      background-size: cover;
+    }
+    .facebook { background-position: 0 0; }
+    .twitter { background-position: -40px 0; }
+    .github { background-position: -80px 0; }
   </style>
 </head>
 
 <body>
   <header>
     <nav>
-      <a href="index.html#start">Table</a>
-      <a href="index.html#input">Input</a>
-      <a href="index.html#output">Output</a>
+      <a href="#table">Table</a>
+      <a href="#input">Input</a>
+      <a href="#output">Output</a>
     </nav>
     
-    <h1 style="padding: 30px">Your Name / Section Mar 2026 </h1>
+    <h1>Cassie Espinosa / Section Mar 2026 </h1>
   </header>
 
   <section id="table">
@@ -55,84 +75,87 @@
         <th> Correction Done</th>
       </tr>
       <tr>
-        <td> 1 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td>1</td> 
+        <td>style in &lt;head&gt; (CSS)</td> 
+        <td>Selector 'tr:nth-child(1) ~ tr:nth-child(odd)' may not alternate row colors correctly.</td>
+        <td>Changed to 'tr:nth-child(odd)' to properly style alternating rows.</td>
       </tr>
       <tr>
-        <td> 2 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td>2</td> 
+        <td>nav links (HTML)</td> 
+        <td>Links href="#start", "#input", "#output" do not match existing section IDs.</td>
+        <td>Updated hrefs to match section IDs (href="#table", "#input", "#output").</td>
       </tr>
       <tr>
-        <td> 3 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td>3</td> 
+        <td>footer icons (CSS/HTML)</td> 
+        <td>Social media icons may not display if CSS for .icon.facebook, .icon.twitter, .icon.github is missing.</td>
+        <td>Added CSS with width, height, background-image, and background-position for each icon.</td>
       </tr>
       <tr>
-        <td> 4 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td>4</td> 
+        <td>h1 (HTML)</td> 
+        <td>Inline style used in &lt;h1&gt; instead of CSS file.</td>
+        <td>Moved padding style to CSS for header h1.</td>
       </tr>
       <tr>
-        <td> 5 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td>5</td> 
+        <td>favicon link (HTML)</td> 
+        <td>Path 'images/favicon.ico' may break if file does not exist or path is wrong.</td>
+        <td>Ensured favicon.ico exists in 'images/' folder or corrected path.</td>
       </tr>
       <tr>
-        <td> 6 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td>6</td> 
+        <td></td> 
+        <td></td>
+        <td></td>
       </tr>
       <tr>
-        <td> 7 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td>7</td> 
+        <td></td> 
+        <td></td>
+        <td></td>
       </tr>
       <tr>
-        <td> 8 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td>8</td> 
+        <td></td> 
+        <td></td>
+        <td></td>
       </tr>
       <tr>
-        <td> 9 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td>9</td> 
+        <td></td> 
+        <td></td>
+        <td></td>
       </tr>
       <tr>
-        <td> 10 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td>10</td> 
+        <td></td> 
+        <td></td>
+        <td></td>
       </tr>
-     
     </table>
     <hr>
   </section>
   
-   
-  <!--- anchors for socmed site are done with image sprites -->
+  <section id="input">
+
+  </section>
+
+  <section id="output">
+
+  </section>
+
   <footer>
     <a href="https://facebook.com"> 
-    <div class="icon facebook"></div>
+      <div class="icon facebook"></div>
     </a>
     <a href="https://twitter.com">
-    <div class="icon twitter"></div>
+      <div class="icon twitter"></div>
     </a>
     <a href="https://github.com">
-    <div class="icon github"></div>
+      <div class="icon github"></div>
     </a>
   </footer>
- 
 </body>
-
 </html>
